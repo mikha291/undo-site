@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Политика конфиденциальности — Undelete</title>
+<meta name="description" content="Как Undelete обрабатывает и хранит персональные данные.">
+<link rel="icon" type="image/png" href="../assets/img/icon.png">
+<style>
+@font-face{font-family:Onest;font-weight:400;font-display:swap;src:url(../assets/fonts/onest-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:400;font-display:swap;src:url(../assets/fonts/onest-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Onest;font-weight:600;font-display:swap;src:url(../assets/fonts/onest-cyrillic-600-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:600;font-display:swap;src:url(../assets/fonts/onest-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Onest;font-weight:700;font-display:swap;src:url(../assets/fonts/onest-cyrillic-700-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:700;font-display:swap;src:url(../assets/fonts/onest-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Press Start 2P";font-weight:400;font-display:swap;src:url(../assets/fonts/press-start-2p-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Press Start 2P";font-weight:400;font-display:swap;src:url(../assets/fonts/press-start-2p-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{--bg:#FBF8F5;--card:#fff;--lav:#C9CCF5;--ink:#14121C;--mute:#5d5a6b;--green:#4CC24A;--yel:#F5B829;--pink:#F0508A;--line:#14121C}
+@media (prefers-color-scheme:dark){:root{--bg:#15142B;--card:#1F1E3B;--lav:#3A3C7A;--ink:#F2F0FF;--mute:#A9A7C4;--line:#C9CCF5}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Onest,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:2px solid var(--line);background:var(--card)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"Press Start 2P",monospace;font-size:14px}
+.brand img{width:36px;height:auto;image-rendering:pixelated}
+nav a{margin-left:16px;text-decoration:none;font-weight:600;font-size:14px}
+nav a:hover{text-decoration:underline}
+h1,h2,h3{font-family:"Press Start 2P","Onest",monospace;font-weight:400;line-height:1.5}
+h1{font-size:clamp(20px,5vw,30px);margin:0 0 16px}
+h2{font-size:clamp(14px,3.4vw,18px);margin:40px 0 16px}
+.hero{padding:40px 0 24px;display:grid;grid-template-columns:1fr 200px;gap:24px;align-items:center}
+.hero p.lead{font-size:18px;margin:0 0 20px;color:var(--mute)}
+.hero img{width:100%;max-width:200px;height:auto;image-rendering:pixelated;justify-self:center}
+.btn{display:inline-block;background:var(--green);color:#14121C;text-decoration:none;font-weight:700;border:2px solid var(--line);box-shadow:3px 3px 0 var(--line);padding:12px 20px;border-radius:0}
+.btn:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--line)}
+.btn.alt{background:var(--lav);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.card{background:var(--card);border:2px solid var(--line);box-shadow:3px 3px 0 var(--line);padding:16px}
+.card img{width:56px;height:auto;image-rendering:pixelated;margin-bottom:8px}
+.card h3{font-size:12px;margin:0 0 8px}
+.card p{margin:0;color:var(--mute);font-size:15px}
+ol.steps{padding-left:22px}
+ol.steps li{margin-bottom:8px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:2px solid var(--line);margin:12px 0 20px}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th{background:var(--lav);font-weight:700}
+.doc{padding-top:32px;padding-bottom:8px}
+.doc p{margin:0 0 12px}
+.doc h2{margin-top:32px}
+.note{color:var(--mute);font-size:14px}
+mark.ph{background:#F5B829;color:#14121C;padding:0 3px}
+footer{margin-top:56px;border-top:2px solid var(--line);background:var(--card);padding:24px 0 40px;font-size:14px;color:var(--mute)}
+footer a{margin-right:16px}
+footer p{margin:0 0 8px}
+@media (max-width:640px){.hero{grid-template-columns:1fr}.hero img{max-width:140px;order:-1}header.top .wrap{flex-wrap:wrap}nav{width:100%;display:flex;gap:14px;flex-wrap:wrap}nav a{margin-left:0;font-size:13px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="../"><img src="../assets/img/icon.png" alt="">Undelete</a><nav><a href="../offer/">Оферта</a><a href="../privacy/">Конфиденциальность</a><a href="https://t.me/undodelete_bot">Бот</a></nav></div></header>
+<main class="wrap doc"><h1>Политика конфиденциальности</h1><p class="note">Редакция от 19.10.2026</p><h2>1. Общие положения</h2><p>1.1. Настоящая политика описывает, как Индивидуальный предприниматель Позднякова Анастасия Викторовна, ИНН 650123892052, ОГРНИП 325650000006176 (далее — «Оператор») обрабатывает персональные данные пользователей Telegram-бота @undodelete_bot и этого сайта.</p><p>1.2. Пользуясь Ботом, Пользователь подтверждает, что ознакомился с политикой и согласен с ней. Политика действует вместе с публичной офертой, ссылка на неё размещена на сайте.</p><h2>2. Какие данные обрабатываются</h2><ul><li>Данные аккаунта Telegram: числовой идентификатор, имя, имя пользователя (username).</li><li>Данные подключения Бота: идентификатор подключения «Автоматизации чатов», факт и дата подключения или отключения.</li><li>Настройки Пользователя в Боте: уведомления, Архив, выбранные чаты.</li><li>Содержимое сообщений в подключённых чатах: текст и подписи, идентификаторы вложений; при включённом Архиве — также голосовые, фото и короткие видео в пределах квоты.</li><li>Сведения об оплатах: дата, тариф, сумма, идентификатор платежа. Данные банковской карты Оператор не получает и не хранит.</li><li>Данные партнёрской программы: кто кого пригласил, начисления и заявки на выплату.</li><li>Технические журналы работы Бота: идентификаторы и сообщения об ошибках. Содержимое переписки в журналы не попадает.</li></ul><h2>3. Цели обработки</h2><p>3.1. Оказание услуг по публичной оферте: показ удалённых и изменённых сообщений, ведение Архива, проверка Подписки.</p><p>3.2. Приём оплат, учёт платежей, возвраты.</p><p>3.3. Работа партнёрской программы и выплаты.</p><p>3.4. Поддержка Пользователей, обеспечение безопасности и стабильности Сервиса.</p><p>3.5. Оператор не использует данные для рекламы, не продаёт их и не использует содержимое переписки в иных целях.</p><h2>4. Правовые основания</h2><p>Обработка необходима для исполнения договора (публичной оферты), стороной которого является Пользователь. Для хранения содержимого Архива Пользователь дополнительно даёт согласие, самостоятельно включая эту функцию и выбирая чаты. Согласие можно отозвать, выключив Архив или удалив данные командой /deleteme.</p><h2>5. Сроки хранения</h2><p>5.1. Обычные сообщения хранятся 30 дней и удаляются автоматически.</p><p>5.2. Архив хранится, пока активна Подписка (не более 50 000 сообщений на Пользователя).</p><p>5.3. После окончания Подписки все сообщения, Архив и медиа хранятся ещё 7 дней, затем удаляются полностью.</p><p>5.4. Сведения об оплатах, сроке Подписки, партнёрских начислениях и использованном Пробном периоде сохраняются для учёта, возвратов и налоговой отчётности и не удаляются командой /deleteme.</p><h2>6. Передача данных третьим лицам</h2><p>6.1. Оператор не продаёт и не раскрывает данные третьим лицам, кроме технических подрядчиков, без которых Сервис не работает: платформа Telegram (через неё работает Бот); хостинг-провайдер <mark class="ph">[указать провайдера]</mark>; платёжный сервис <mark class="ph">[указать после подключения]</mark>.</p><p>6.2. <mark class="ph">[Если серверы находятся за пределами Российской Федерации — указать страну и порядок трансграничной передачи в соответствии с законодательством о персональных данных.]</mark></p><p>6.3. Данные могут быть переданы государственным органам в случаях и порядке, прямо предусмотренных законом.</p><h2>7. Права пользователя</h2><p>7.1. Пользователь вправе получить сведения о своих данных, потребовать их уточнения или удаления, отозвать согласие.</p><p>7.2. Быстрее всего это сделать в Боте: «Очистить архив» стирает Архив, команда /deleteme удаляет подключение, настройки, сообщения, Архив и вложения. Другие запросы можно направить Оператору по контактам ниже.</p><p>7.3. Оператор рассматривает обращения в сроки, установленные законом.</p><h2>8. Защита данных</h2><p>Соединения с Ботом и сайтом защищены шифрованием (TLS), доступ к базе данных ограничен, в журналах работы нет содержимого переписки. Оператор принимает разумные организационные и технические меры защиты, но не может гарантировать абсолютную безопасность.</p><h2>9. Сайт, cookies и аналитика</h2><p>Этот сайт не использует cookies и сервисы аналитики, шрифты и изображения загружаются с самого сайта.</p><h2>10. Изменение политики и контакты</h2><p>10.1. Оператор вправе изменять политику; актуальная редакция всегда размещена на этой странице. Редакция от 19.10.2026.</p><p>10.2. Контакты Оператора: <mark class="ph">[e-mail для обращений]</mark>; Telegram: <mark class="ph">[@username поддержки в Telegram]</mark>; адрес: 693013, Россия, Сахалинская обл., г. Южно-Сахалинск, ул. Комсомольская, д. 296А, кв. 55.</p></main>
+<footer><div class="wrap"><p><strong>Индивидуальный предприниматель Позднякова Анастасия Викторовна</strong></p><p>ИНН 650123892052 · ОГРНИП 325650000006176</p><p>693013, Россия, Сахалинская обл., г. Южно-Сахалинск, ул. Комсомольская, д. 296А, кв. 55</p><p>Связь: <mark class="ph">[e-mail для обращений]</mark> · Telegram: <mark class="ph">[@username поддержки в Telegram]</mark></p><p><a href="../offer/">Публичная оферта</a><a href="../privacy/">Политика конфиденциальности</a></p></div></footer>
+</body>
+</html>

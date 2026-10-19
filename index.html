@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Undelete — бот, который показывает удалённые сообщения в Telegram</title>
+<meta name="description" content="Бот Undelete показывает удалённые и изменённые сообщения в личных чатах Telegram. 7 дней бесплатно.">
+<link rel="icon" type="image/png" href="assets/img/icon.png">
+<style>
+@font-face{font-family:Onest;font-weight:400;font-display:swap;src:url(assets/fonts/onest-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:400;font-display:swap;src:url(assets/fonts/onest-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Onest;font-weight:600;font-display:swap;src:url(assets/fonts/onest-cyrillic-600-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:600;font-display:swap;src:url(assets/fonts/onest-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Onest;font-weight:700;font-display:swap;src:url(assets/fonts/onest-cyrillic-700-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:700;font-display:swap;src:url(assets/fonts/onest-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Press Start 2P";font-weight:400;font-display:swap;src:url(assets/fonts/press-start-2p-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Press Start 2P";font-weight:400;font-display:swap;src:url(assets/fonts/press-start-2p-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{--bg:#FBF8F5;--card:#fff;--lav:#C9CCF5;--ink:#14121C;--mute:#5d5a6b;--green:#4CC24A;--yel:#F5B829;--pink:#F0508A;--line:#14121C}
+@media (prefers-color-scheme:dark){:root{--bg:#15142B;--card:#1F1E3B;--lav:#3A3C7A;--ink:#F2F0FF;--mute:#A9A7C4;--line:#C9CCF5}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Onest,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:2px solid var(--line);background:var(--card)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"Press Start 2P",monospace;font-size:14px}
+.brand img{width:36px;height:auto;image-rendering:pixelated}
+nav a{margin-left:16px;text-decoration:none;font-weight:600;font-size:14px}
+nav a:hover{text-decoration:underline}
+h1,h2,h3{font-family:"Press Start 2P","Onest",monospace;font-weight:400;line-height:1.5}
+h1{font-size:clamp(20px,5vw,30px);margin:0 0 16px}
+h2{font-size:clamp(14px,3.4vw,18px);margin:40px 0 16px}
+.hero{padding:40px 0 24px;display:grid;grid-template-columns:1fr 200px;gap:24px;align-items:center}
+.hero p.lead{font-size:18px;margin:0 0 20px;color:var(--mute)}
+.hero img{width:100%;max-width:200px;height:auto;image-rendering:pixelated;justify-self:center}
+.btn{display:inline-block;background:var(--green);color:#14121C;text-decoration:none;font-weight:700;border:2px solid var(--line);box-shadow:3px 3px 0 var(--line);padding:12px 20px;border-radius:0}
+.btn:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--line)}
+.btn.alt{background:var(--lav);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.card{background:var(--card);border:2px solid var(--line);box-shadow:3px 3px 0 var(--line);padding:16px}
+.card img{width:56px;height:auto;image-rendering:pixelated;margin-bottom:8px}
+.card h3{font-size:12px;margin:0 0 8px}
+.card p{margin:0;color:var(--mute);font-size:15px}
+ol.steps{padding-left:22px}
+ol.steps li{margin-bottom:8px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:2px solid var(--line);margin:12px 0 20px}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th{background:var(--lav);font-weight:700}
+.doc{padding-top:32px;padding-bottom:8px}
+.doc p{margin:0 0 12px}
+.doc h2{margin-top:32px}
+.note{color:var(--mute);font-size:14px}
+mark.ph{background:#F5B829;color:#14121C;padding:0 3px}
+footer{margin-top:56px;border-top:2px solid var(--line);background:var(--card);padding:24px 0 40px;font-size:14px;color:var(--mute)}
+footer a{margin-right:16px}
+footer p{margin:0 0 8px}
+@media (max-width:640px){.hero{grid-template-columns:1fr}.hero img{max-width:140px;order:-1}header.top .wrap{flex-wrap:wrap}nav{width:100%;display:flex;gap:14px;flex-wrap:wrap}nav a{margin-left:0;font-size:13px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="./"><img src="assets/img/icon.png" alt="">Undelete</a><nav><a href="offer/">Оферта</a><a href="privacy/">Конфиденциальность</a><a href="https://t.me/undodelete_bot">Бот</a></nav></div></header>
+
+<main class="wrap">
+<section class="hero">
+  <div>
+    <h1>Undelete</h1>
+    <p class="lead">Бот в Telegram, который показывает, что собеседник удалил или изменил в личном чате. Без входа в ваш аккаунт.</p>
+    <a class="btn" href="https://t.me/undodelete_bot">Открыть бота @undodelete_bot</a>
+    <p class="note" style="margin-top:12px">Первые 7 дней бесплатно. Нужна функция Telegram «Автоматизация чатов» (доступна в Telegram Premium).</p>
+  </div>
+  <img src="assets/img/happy.png" alt="Призрак Undelete">
+</section>
+
+<h2>Как это работает</h2>
+<ol class="steps">
+  <li>Откройте Настройки Telegram → Аккаунт → Автоматизация чатов.</li>
+  <li>Добавьте @undodelete_bot и выберите, к каким чатам дать доступ.</li>
+  <li>Когда собеседник удалит или изменит сообщение, бот пришлёт вам, что там было.</li>
+</ol>
+<p class="note">Бот не просит номер телефона, код или пароль и не получает доступ к вашему аккаунту. Отключить его можно в тех же настройках Telegram в любой момент.</p>
+
+<h2>Что умеет</h2>
+<div class="grid">
+  <div class="card"><img src="assets/img/censored.png" alt=""><h3>Удалённые</h3><p>Покажем текст сообщения, которое собеседник успел удалить, и отправим вложение, если оно было.</p></div>
+  <div class="card"><img src="assets/img/search.png" alt=""><h3>Изменённые</h3><p>Увидите, что было и что стало после правки.</p></div>
+  <div class="card"><img src="assets/img/archive.png" alt=""><h3>Архив</h3><p>По желанию сохраняет выбранные чаты и выгружает их файлом. Включается только вами.</p></div>
+  <div class="card"><img src="assets/img/coin.png" alt=""><h3>Партнёрка</h3><p>30% с первой оплаты приглашённого и 10% с каждой следующей.</p></div>
+</div>
+
+<h2>Тарифы</h2>
+<table>
+<tr><th>Тариф</th><th>Срок</th><th>Цена</th></tr>
+<tr><td>Месячный</td><td>30 дней</td><td>250 ₽</td></tr>
+<tr><td>6 месяцев</td><td>182 дня</td><td>1099 ₽</td></tr>
+<tr><td>Годовой</td><td>365 дней</td><td>1799 ₽</td></tr>
+</table>
+<p class="note">Оплата в боте. Подробные условия — в <a href="offer/">публичной оферте</a>.</p>
+
+<h2>Что с вашими данными</h2>
+<p>Сообщения хранятся 30 дней и затем удаляются. После окончания подписки данные хранятся ещё 7 дней, после чего удаляются полностью. Архив работает только если вы сами его включили. Удалить всё можно в любой момент командой /deleteme. Подробности — в <a href="privacy/">политике конфиденциальности</a>.</p>
+</main>
+
+<footer><div class="wrap"><p><strong>Индивидуальный предприниматель Позднякова Анастасия Викторовна</strong></p><p>ИНН 650123892052 · ОГРНИП 325650000006176</p><p>693013, Россия, Сахалинская обл., г. Южно-Сахалинск, ул. Комсомольская, д. 296А, кв. 55</p><p>Связь: <mark class="ph">[e-mail для обращений]</mark> · Telegram: <mark class="ph">[@username поддержки в Telegram]</mark></p><p><a href="offer/">Публичная оферта</a><a href="privacy/">Политика конфиденциальности</a></p></div></footer>
+</body>
+</html>
